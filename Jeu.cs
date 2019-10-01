@@ -21,6 +21,7 @@ namespace lets_play
     // }
 
     public class Orthogenie
+    /// This class allows to game the "pendu" or "bescherelle".
     {
         // constructeur
         public string solution, mot;
@@ -51,6 +52,7 @@ namespace lets_play
 
         // Methodes
         public void motMystere( string monMot )
+        /// Initialize the word mystery with stars and it will print to end user.
         {
             int compteur;
 
@@ -62,11 +64,11 @@ namespace lets_play
         }
 
         public void joue(char caractere)
+        /// This method allows to execute the "pendu" or "bescherelle" game. 
         {
             // Jeu du pendu
             int compteur;
             StringBuilder motMystere = new StringBuilder(this.mot);
-            Console.WriteLine(this.solution.Length);
 
             for( compteur = 0; compteur <= this.solution.Length-1; compteur++ )
             {
@@ -75,9 +77,7 @@ namespace lets_play
                 {
                     motMystere[compteur] = caractere;
                     this.mot = motMystere.ToString();
-                }
-                else{
-                    points = points + 1;
+                    this.points = this.points + 1;
                 }
             }
 
@@ -86,18 +86,8 @@ namespace lets_play
     }
 
     public class Jeu
+    /// This class allows to execute the game with the method "main".
     {
-
-        // // constructeur
-        // public int point;
-        // public Orthogenie (int point) { this.point = 0; }
-
-        // public int Point
-        // {
-        //     get => this.point;
-        //     set => this.point = value;
-        // }
-
 
         static void Main(string[] args)
         {
@@ -107,22 +97,8 @@ namespace lets_play
             
             Orthogenie monjeu = new Orthogenie("girafe","girafe");
             monjeu.solution = "girafe";
-            // Console.WriteLine(monjeu.solution);
-            // Console.WriteLine(monjeu.points);
+
             monjeu.motMystere(monjeu.solution);
-            // Console.WriteLine(monjeu.mot);
-            // //--
-            // monjeu.joue('f');
-            // Console.WriteLine(monjeu.mot);
-            // Console.WriteLine(monjeu.points);
-            // //--
-            // monjeu.joue('o');
-            // Console.WriteLine(monjeu.mot);
-            // Console.WriteLine(monjeu.points);
-            // //--
-            // monjeu.joue('a');
-            // Console.WriteLine(monjeu.mot);
-            // Console.WriteLine(monjeu.points);
 
             while(monjeu.mot.Contains('*'))
             {
@@ -136,9 +112,9 @@ namespace lets_play
                 char lettre = Convert.ToChar(lettre_keyboard);
                 monjeu.joue(lettre);
                 Console.WriteLine(monjeu.mot);
-                Console.WriteLine(monjeu.points);
-
             }
+            Console.WriteLine("J'ai gagne avec " + Convert.ToString(monjeu.points) + " points !" );
+            Console.WriteLine(monjeu.points);
 
         }
 
