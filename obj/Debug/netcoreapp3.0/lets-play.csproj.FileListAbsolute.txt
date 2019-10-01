@@ -1,0 +1,11 @@
+/home/zak/Documents/formations/itescia/m2-ils/c-sharp/code/lets-play/bin/Debug/netcoreapp3.0/lets-play
+/home/zak/Documents/formations/itescia/m2-ils/c-sharp/code/lets-play/bin/Debug/netcoreapp3.0/lets-play.deps.json
+/home/zak/Documents/formations/itescia/m2-ils/c-sharp/code/lets-play/bin/Debug/netcoreapp3.0/lets-play.runtimeconfig.json
+/home/zak/Documents/formations/itescia/m2-ils/c-sharp/code/lets-play/bin/Debug/netcoreapp3.0/lets-play.runtimeconfig.dev.json
+/home/zak/Documents/formations/itescia/m2-ils/c-sharp/code/lets-play/bin/Debug/netcoreapp3.0/lets-play.dll
+/home/zak/Documents/formations/itescia/m2-ils/c-sharp/code/lets-play/bin/Debug/netcoreapp3.0/lets-play.pdb
+/home/zak/Documents/formations/itescia/m2-ils/c-sharp/code/lets-play/obj/Debug/netcoreapp3.0/lets-play.csprojAssemblyReference.cache
+/home/zak/Documents/formations/itescia/m2-ils/c-sharp/code/lets-play/obj/Debug/netcoreapp3.0/lets-play.AssemblyInfoInputs.cache
+/home/zak/Documents/formations/itescia/m2-ils/c-sharp/code/lets-play/obj/Debug/netcoreapp3.0/lets-play.AssemblyInfo.cs
+/home/zak/Documents/formations/itescia/m2-ils/c-sharp/code/lets-play/obj/Debug/netcoreapp3.0/lets-play.dll
+/home/zak/Documents/formations/itescia/m2-ils/c-sharp/code/lets-play/obj/Debug/netcoreapp3.0/lets-play.pdb
