@@ -5,22 +5,17 @@ namespace lets_play
 {
     public enum Mode { pendu,bescherelle };
 
-    interface IJeu
+    interface Int_Jeu
     {
-        void joue(string caractere);
+        void joue(char caractere);
     }
-
-    // public class Revision
-    // {
-
-    // }   
 
     // public class Classe
     // {
 
     // }
 
-    public class Orthogenie
+    public class Orthogenie : Int_Jeu
     /// This class allows to game the "pendu" or "bescherelle".
     {
         // constructeur
@@ -84,6 +79,13 @@ namespace lets_play
         }
 
     }
+
+    // public class Revision : Orthogenie
+    // {
+
+    //     public Revision(int points, string prenom): base(points)
+    //     { this.prenom = prenom ;}
+    // }   
 
     public class Jeu
     /// This class allows to execute the game with the method "main".
