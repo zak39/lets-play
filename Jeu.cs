@@ -71,16 +71,43 @@ namespace lets_play
             // Jeu du pendu
             int compteur;
             StringBuilder motMystere = new StringBuilder(this.mot);
-
+            
             for( compteur = 0; compteur <= this.solution.Length-1; compteur++ )
             {
-                // Console.WriteLine(this.solution[compteur]);
-                if ( this.solution[compteur] == caractere )
+                if ( this.mode == Mode.pendu )
                 {
-                    motMystere[compteur] = caractere;
-                    this.mot = motMystere.ToString();
-                    this.points = this.points + 1;
+                    if ( this.solution[compteur] == caractere )
+                    {
+                        motMystere[compteur] = caractere;
+                        this.mot = motMystere.ToString();
+                        this.points = this.points + 1;
+                    }
                 }
+                if ( this.mode == Mode.bescherelle )
+                {
+                    
+                    // Console.WriteLine("-------");
+                    // Console.WriteLine(this.solution[compteur]);
+                    // Console.WriteLine(this.mot[compteur]);
+                    // Console.WriteLine(motMystere[compteur]);
+                    // Console.WriteLine(caractere);
+
+                    // 'g' == 'g' && 'g' =! '*'
+                    // 'g' == 'i' && '*' =! '*'
+                    // 1 && 1
+                    // if ( this.solution[compteur] == caractere && this.mot[compteur] != '*' )
+                    if ( this.solution[compteur] == caractere && this.mot[compteur] != '*' )
+                    {
+                        motMystere[compteur] = caractere;
+                        this.mot = motMystere.ToString();
+                        this.points = this.points + 1;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
             }
 
         }
