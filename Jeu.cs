@@ -3,7 +3,9 @@ using System.Text; // import le StringBuider
 
 namespace lets_play
 {
-    public enum Mode { pendu,bescherelle };
+    public enum Mode { pendu,bescherelle }; // On a cree une variable qui est globale dans toutes les classes et fonctions si
+                                            // elles font parties du namespece "lets_play".
+                                            // Pourtant on me dit que `Mode` est un type. Pourqoi ? 
 
     interface Int_Jeu
     {
@@ -26,6 +28,10 @@ namespace lets_play
         public int points;
         public Orthogenie (int points) { this.points = 0; }
 
+        public Mode mode;
+        public Orthogenie (Mode mode) { this.mode = mode; }
+
+
         // getters and setters
         public string Solution
         {
@@ -44,6 +50,7 @@ namespace lets_play
             get => this.mot;
             set => this.mot = value;
         }
+
 
         // Methodes
         public void motMystere( string monMot )
@@ -94,13 +101,14 @@ namespace lets_play
         static void Main(string[] args)
         {
            
-            // Mode m;
-            // m = Mode.pendu;
-            
+            Mode mode;
             Orthogenie monjeu = new Orthogenie("girafe","girafe");
             monjeu.solution = "girafe";
-
+            monjeu.mode = Mode.pendu;
+        
             monjeu.motMystere(monjeu.solution);
+
+            Console.WriteLine(monjeu.mode);
 
             while(monjeu.mot.Contains('*'))
             {
