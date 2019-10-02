@@ -103,8 +103,36 @@ namespace lets_play
            
             Mode mode;
             Orthogenie monjeu = new Orthogenie("girafe","girafe");
+        
+            Console.WriteLine("Merci de saisir soit 'pendu' soit 'bescherelle' sans la cote !");
+            
+            string mon_mode_jeu = null;
+
+            // string mon_mode_jeu = null;
+            // while( mon_mode_jeu != "pendu" || mon_mode_jeu != "bescherelle")
+            while( String.IsNullOrEmpty(mon_mode_jeu) )
+            {
+                mon_mode_jeu = Console.ReadLine();
+
+                if ( mon_mode_jeu == "pendu" )
+                {
+                    monjeu.mode = Mode.pendu;       
+
+                }
+                else if ( mon_mode_jeu == "bescherelle" )
+                {
+                    monjeu.mode = Mode.bescherelle;       
+                }
+                else
+                {
+                    Console.WriteLine("Le mode de jeu par defaut est donc le Pendu !");
+                    monjeu.mode = Mode.pendu;       
+                    // Console.WriteLine("Il y a un probleme dans le programme !");
+                }
+
+            }
+
             monjeu.solution = "girafe";
-            monjeu.mode = Mode.pendu;
         
             monjeu.motMystere(monjeu.solution);
 
