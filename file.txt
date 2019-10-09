@@ -1,6 +1,6 @@
-"zak";"girafe";"gi*af*;4
-"zak";"girafe";"giraf*;5
-"candide";"singe";"singe";5
-"Maxou";"taureau";"t******";1
-"Maxou";"taureau";"t*ur**u";4
-"Maxou";"taureau";"taur*au";6
+zak;girafe;gi*af*;4
+zak;girafe;giraf*;5
+candide;singe;singe;5
+Maxou;taureau;t******;1
+Maxou;taureau;t*ur**u;4
+Maxou;taureau;taur*au;6

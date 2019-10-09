@@ -30,33 +30,34 @@ namespace lets_play
 
         };
 
-        private List<Orthogenie> list_Orthogenie_pub;
+        // private List<Orthogenie> list_Orthogenie_pub;
 
-        public Classe(List<Orthogenie> list_Orthogenie)
-        {
-            this.list_Orthogenie_pub = list_Orthogenie;
-        }
+        // public Classe(List<Orthogenie> list_Orthogenie)
+        // {
+        //     this.list_Orthogenie_pub = list_Orthogenie;
+        // }
 
         public List<Revision> classement;
         public Classe(List<Revision> list_revision, List<Revision> classement)
         {
             this.list_Revision = list_revision;
             this.classement = classement;
+            //this.classement = new List<Revision>();
         }
 
-        /*public Classe (List<String> classement) 
+        /*public Classe (List<Revision> classement) 
         {
-            this.classement = new List<String>();
-            this.list_Orthogenie_pub = new List<Orthogenie>();
+            this.classement = new List<Revision>();
+            //this.list_Orthogenie_pub = new List<Orthogenie>();
         }*/
 
 
 
-        public List<Orthogenie> List_Orthogenie_pub
-        {
-            get => this.list_Orthogenie_pub;
-            set => this.list_Orthogenie_pub = value;
-        }
+        // public List<Orthogenie> List_Orthogenie_pub
+        // {
+        //     get => this.list_Orthogenie_pub;
+        //     set => this.list_Orthogenie_pub = value;
+        // }
 
         public List<Revision> Classement
         {
@@ -70,15 +71,32 @@ namespace lets_play
             set => this.list_Revision = value;
         }
 
-        public void Classer()
+        public void get_classement()
         {
-            //var result01 = this.list_Revision.OrderByDescending(a => a.note).ThenBy(a => a.prenom);
-            var result01 = this.list_Revision.OrderByDescending(a => a.note);       // Source : https://www.codeproject.com/Tips/761275/How-to-Sort-a-List
-            this.classement = new List<Revision>();
-            foreach (Revision element_revision in result01)
-            {
-                this.classement.Add(element_revision);
-            }
+            this.classement = this.classement.OrderByDescending(a => a.note).ToList(); // uniquement un element ???
+
+
+            // Ne marche pas
+            //foreach( Revision item01 in this.classement)
+            // for( int i = 0; i <= this.classement.Count(); i++)
+            // {
+            //     //foreach( Revision item02 in this.classement)
+            //     for( int j = 0; j <= this.classement.Count(); )
+            //     {
+            //         //if( item01.prenom == item02.prenom )
+            //         if( this.classement[i].prenom == this.classement[j].prenom )
+            //         {
+            //             //if (item01.points > item02.points)
+            //             if( this.classement[i].points > this.classement[j].points )
+            //             {
+            //                 // destroy item02
+            //                 //this.classement.Remove(item02);
+            //                 Console.WriteLine("I should destroy the object "+this.classement[j].prenom+" with "+Convert.ToString(this.classement[j].points)+" points !");
+
+            //             }
+            //         }
+            //     }
+            // }
 
             /*foreach (Revision element in this.classement)
             {
@@ -87,6 +105,31 @@ namespace lets_play
                 Console.WriteLine("--");
             }*/
 
+        }
+        public void save(string prenom, int score)
+        {
+            List<string> prenoms = new List<string>();
+            for( int i = 0; i <= this.classement.Count()-1; i++ )
+            {
+                prenoms.Add(this.classement[i].prenom);
+            }
+            if( prenoms.Contains(prenom) == false )
+            {
+                Revision new_joueur = new Revision("unknwon");
+                new_joueur.prenom = prenom;
+                new_joueur.note = score;
+                this.classement.Add(new_joueur);
+            }
+            else
+            {
+                for(int i=0; i <= this.classement.Count()-1; i++)
+                {
+                    if( this.classement[i].prenom == prenom )
+                    {
+                        this.classement[i].note = this.classement[i].note+score;
+                    }
+                }
+            }
         }
 
         /*public void Charge(string pathRelative="./file.txt")*/ // For Linux
@@ -136,7 +179,8 @@ namespace lets_play
 
                         //this.list_Orthogenie_pub.Add(new_object); // Error -> System.NullReferenceException : 'Object reference not set to an instance of an object.'
                         this.list_Orthogenie.Add(new_orthogenie); // Error -> System.NullReferenceException : 'Object reference not set to an instance of an object.'
-                        this.list_Revision.Add(new_revision); // Error -> System.NullReferenceException : 'Object reference not set to an instance of an object.'
+                        //this.list_Revision.Add(new_revision); // Error -> System.NullReferenceException : 'Object reference not set to an instance of an object.'
+                        this.classement.Add(new_revision); // Error -> System.NullReferenceException : 'Object reference not set to an instance of an object.'
                     }
                 }
             }
@@ -384,13 +428,31 @@ namespace lets_play
             /*Console.WriteLine(monjeu.points);*/
 
             Classe classer = new Classe();
+            classer.classement = new List<Revision>();
             classer.Charge();
-            classer.Classer();
+            classer.get_classement();
 
-            // foreach(Revision score in classer.classement)
+            // foreach(Revision score in get_classement.classement)
             // {
             //     Console.WriteLine(score.prenom + " - " + score.note);
             // }
+
+            Revision new_joueur = new Revision("unknwon");
+            new_joueur.prenom = "Baptiste";
+            new_joueur.note = 12;
+            classer.classement.Add(new_joueur);
+            classer.get_classement();
+            classer.save("Baptiste",20);
+            classer.save("Baptiste",30);
+            classer.save("Baptiste",50);
+            classer.save("Baptiste",10);
+            classer.save("Balzac",200);
+            classer.get_classement();
+
+            foreach(Revision score in classer.classement)
+            {
+                Console.WriteLine(score.prenom + " - " + score.note);
+            }
         }
 
     }
